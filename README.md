@@ -93,7 +93,7 @@ npm run dev
 ├─ maket/                  # исходные макеты дизайнера
 ├─ original-game.html      # оригинальная страница 1998 года (legacy)
 ├─ docs/                   # скриншоты для README
-└─ .github/workflows/      # CI и деплой на GitHub Pages
+└─ .github/workflows/      # CI
 ```
 
 ### Почему без React
@@ -142,9 +142,14 @@ npm run build
 npm run preview
 ```
 
-Готовый сайт — статические файлы в `dist/`. `base: './'` в [`vite.config.ts`](vite.config.ts) позволяет выложить сборку в подкаталог (GitHub Pages, Vercel, Netlify, любой статический хостинг).
+Готовый сайт — статические файлы в `dist/`. Production-хостинг — Vercel: проект собирается автоматически при push в `main`. В настройках Vercel используются стандартные значения для Vite:
 
-Для GitHub Pages включите в настройках репозитория **Settings → Pages → Source: GitHub Actions**. Workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) соберёт и опубликует сайт при push в `main`.
+- Framework Preset: **Vite**
+- Install Command: `npm ci`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+
+`base: './'` в [`vite.config.ts`](vite.config.ts) делает сборку переносимой: её можно разместить и в подкаталоге, и на любом другом статическом хостинге.
 
 ## Доступность и производительность
 
