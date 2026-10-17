@@ -5,16 +5,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: [
-      'dist',
-      'coverage',
-      'legacy',
-      'node_modules',
-      'js/**',
-      'css/**',
-      'scripts/**',
-      'original-game.html',
-    ],
+    ignores: ['dist', 'coverage', 'design', 'docs', 'legacy', 'node_modules'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

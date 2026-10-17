@@ -1,4 +1,4 @@
-import { COIN_FACE, COIN_FRAMES } from '../assets';
+import { COIN_FACE, COIN_FRAMES } from '../assets/coin';
 import { GameEngine } from '../game/engine';
 import { formatAccuracy, formatTime } from '../game/format';
 import { createRandom } from '../game/rng';

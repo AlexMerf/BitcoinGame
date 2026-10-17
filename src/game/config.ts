@@ -8,7 +8,7 @@ export const STARTING_COINS = 3;
 export const GAME_DURATION_SECONDS = 120;
 export const TARGET_COINS = 30;
 
-// l0.png is a fully transparent placeholder, so the animation uses l1…l17.
+// Frame 0 is a fully transparent placeholder, so the animation uses frames 1…17.
 export const COIN_FRAME_COUNT = 17;
 export const COIN_FRAME_SECONDS = 0.05;
 

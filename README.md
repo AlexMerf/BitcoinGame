@@ -4,20 +4,20 @@
 
 Современная версия старой аркады «Kill Leonardo Di Caprio Now!» (1998): три вращающиеся биткоин-монеты, 120 секунд и цель — собрать 30 монет. Игра переписана с нуля на TypeScript, работает в браузере без бэкенда, собирается Vite и покрыта unit-тестами.
 
-![Игровой экран](docs/screen-play.png)
+![Игровой экран](docs/screenshots/screen-play.png)
 
-![Экран награды](docs/screen-win.png)
+![Экран награды](docs/screenshots/screen-win.png)
 
 <details>
 <summary>Ещё экраны</summary>
 
-![Стартовый экран](docs/screen-start.png)
+![Стартовый экран](docs/screenshots/screen-start.png)
 
-![Мобильная версия](docs/screen-mobile-play.png)
+![Мобильная версия](docs/screenshots/screen-mobile-play.png)
 
-![Версия для ноутбука](docs/screen-laptop-play.png)
+![Версия для ноутбука](docs/screenshots/screen-laptop-play.png)
 
-![Ландшафт телефона](docs/screen-landscape-play.png)
+![Ландшафт телефона](docs/screenshots/screen-landscape-play.png)
 
 </details>
 
@@ -73,28 +73,38 @@ npm run dev
 
 ```text
 .
-├─ index.html              # семантический каркас: поле, HUD, диалоги, шаблон монеты
+├─ index.html                # семантический каркас: поле, HUD, диалоги, шаблон монеты
 ├─ src/
-│  ├─ main.ts              # bootstrap: шрифт, preload кадров, GameView
-│  ├─ style.css            # дизайн, адаптив, анимации, reduced motion
-│  ├─ assets.ts            # импорт 17 кадров монеты
+│  ├─ main.ts                # bootstrap: шрифт, preload кадров, GameView
+│  ├─ style.css              # дизайн, адаптив, анимации, reduced motion
+│  ├─ assets/
+│  │  ├─ coin.ts             # экспорт 17 кадров монеты
+│  │  ├─ game-field.png      # фон игрового поля (из макета дизайнера)
+│  │  └─ coin/
+│  │     └─ frame-00 … 17.png  # кадры монеты из исходного проекта
 │  ├─ game/
-│  │  ├─ engine.ts         # чистая логика: время, спавн, клики, победа/поражение
-│  │  ├─ config.ts         # все настройки баланса
-│  │  ├─ rng.ts            # mulberry32 + крипто-сид
-│  │  ├─ format.ts         # форматирование времени и точности
-│  │  ├─ types.ts          # Coin, GameStatus, ClickResult
-│  │  └─ engine.test.ts    # 11 unit-тестов правил
+│  │  ├─ engine.ts           # чистая логика: время, спавн, клики, победа/поражение
+│  │  ├─ config.ts           # все настройки баланса
+│  │  ├─ rng.ts              # mulberry32 + крипто-сид
+│  │  ├─ format.ts           # форматирование времени и точности
+│  │  ├─ types.ts            # Coin, GameStatus, ClickResult
+│  │  └─ engine.test.ts      # 11 unit-тестов правил
 │  └─ ui/
-│     ├─ GameView.ts       # DOM, ввод, rAF-цикл, диалоги, эффекты
-│     ├─ sound.ts          # короткие Web Audio сигналы
-│     └─ storage.ts        # best score и mute в localStorage
-├─ l1.png … l17.png        # кадры монеты из исходного проекта
-├─ maket/                  # исходные макеты дизайнера
-├─ original-game.html      # оригинальная страница 1998 года (legacy)
-├─ docs/                   # скриншоты для README
-└─ .github/workflows/      # CI
+│     ├─ GameView.ts         # DOM, ввод, rAF-цикл, диалоги, эффекты
+│     ├─ sound.ts            # короткие Web Audio сигналы
+│     └─ storage.ts          # best score и mute в localStorage
+├─ design/                   # исходные макеты дизайнера: screens/ и ui/
+├─ docs/screenshots/         # скриншоты для README
+├─ legacy/                   # оригинальная страница 1998 года и её старые копии
+└─ .github/workflows/        # CI
 ```
+
+Где что лежит:
+
+- `src/assets/` — все изображения, которые попадают в production-сборку (кадры монеты и фон поля);
+- `design/` — исходные макеты дизайнера, в сборку не попадают (см. [`design/README.md`](design/README.md));
+- `docs/screenshots/` — скриншоты, используемые в этом README;
+- `legacy/` — оригинальная страница 1998 года и её исторические копии (см. [`legacy/README.md`](legacy/README.md)).
 
 ### Почему без React
 
@@ -162,9 +172,9 @@ npm run preview
 
 ## Старая версия
 
-Оригинальная страница 1998 года сохранена как [`original-game.html`](original-game.html). Она работает локально (открывается из корня проекта и использует `l*.png` и `maket/`), но не входит в production-сборку. [`js/main.js`](js/main.js) и [`css/main.css`](css/main.css) — её старые копии, оставленные для истории.
+Оригинальная страница 1998 года сохранена в [`legacy/original-game.html`](legacy/original-game.html). Она открывается локально (двойным щелчком из `legacy/`) и использует общие графические ассеты приложения из `src/assets/`, но не входит в production-сборку. [`legacy/js/main.js`](legacy/js/main.js) и [`legacy/css/main.css`](legacy/css/main.css) — её старые копии, оставленные для истории; подробности — в [`legacy/README.md`](legacy/README.md).
 
-Новая версия использует те же 17 кадров монеты и фон `maket/gameField.png`, но не переиспользует старый код.
+Новая версия использует те же 17 кадров монеты (`src/assets/coin/frame-01.png … frame-17.png`) и фон `src/assets/game-field.png`, но не переиспользует старый код.
 
 ## Происхождение и лицензия
 

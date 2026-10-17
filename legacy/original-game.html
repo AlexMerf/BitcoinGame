@@ -39,7 +39,7 @@
                 
             }
             .table-main tbody {
-                background-image: url(maket/gameField.png);
+                background-image: url(../src/assets/game-field.png);
                 
             }
 
@@ -115,7 +115,10 @@
             function leo_array() {
                 for (n = 0; n != 18; n++) {
                     this[n] = new Image(100, 75);
-                    this[n].src = "l" + n + ".png";
+                    this[n].src =
+                        "../src/assets/coin/frame-" +
+                        String(n).padStart(2, "0") +
+                        ".png";
                 }
                 return;
             }
@@ -273,7 +276,7 @@
                                 '<td><div href=#v666  onClick=kill_em("pos' +
                                     y +
                                     x +
-                                    '")><img draggable="false" src="l0.png" name="pos' +
+                                    '")><img draggable="false" src="../src/assets/coin/frame-00.png" name="pos' +
                                     y +
                                     x +
                                     '" border=0></a></td>'

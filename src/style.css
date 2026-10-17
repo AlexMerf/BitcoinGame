@@ -181,7 +181,7 @@ button {
   max-width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
-  background: #17123f url('../maket/gameField.png') center / cover no-repeat;
+  background: #17123f url('./assets/game-field.png') center / cover no-repeat;
   border: 3px solid #0b0c2e;
   border-radius: 6px;
   box-shadow:

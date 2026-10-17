@@ -3,10 +3,9 @@ coverage
 node_modules
 .npm-cache
 package-lock.json
-maket
-original-game.html
-js
-css
+design
+docs
+legacy
 *.png
 *.jpg
 *.gif
