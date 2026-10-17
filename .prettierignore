@@ -1,0 +1,12 @@
+dist
+coverage
+node_modules
+.npm-cache
+package-lock.json
+maket
+original-game.html
+js
+css
+*.png
+*.jpg
+*.gif
