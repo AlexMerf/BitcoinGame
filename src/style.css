@@ -41,8 +41,10 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   background:
+    url('./assets/page-bg.png') 0 0 / 128px repeat,
     radial-gradient(1200px 700px at 50% -10%, #3a3fa0 0%, transparent 60%),
     linear-gradient(180deg, #2f338c 0%, #232667 100%);
+  background-blend-mode: soft-light, normal, normal;
   background-color: var(--navy);
   -webkit-font-smoothing: antialiased;
 }
